@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Nano.App.Api.Controllers;
@@ -31,6 +32,7 @@ public class EmailsController(ILogger<EmailsController> logger, IRepository repo
     /// <response code="500">Error occurred.</response>
     [HttpPost]
     [Route("send")]
+    [AllowAnonymous]
     [Consumes(HttpContentType.JSON)]
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
